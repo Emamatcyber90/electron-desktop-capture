@@ -1,6 +1,6 @@
 # electron-desktop-capture
 
-The (Electron desktop capture API)[https://github.com/electron/electron/blob/master/docs/api/desktop-capturer.md] does not capture audio as per the following constraints: 
+The [Electron desktop capture API](https://github.com/electron/electron/blob/master/docs/api/desktop-capturer.md) does not capture audio as per the following constraints:
 
 ```
 const constraints = {
