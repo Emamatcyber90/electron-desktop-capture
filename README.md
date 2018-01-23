@@ -23,7 +23,7 @@ On Electron v1.6.2 and v1.6.5, we get no error message, however, the following l
 [57858:0914/130847.751454:ERROR:audio_send_stream.cc(90)] Failed to set up send codec state.
 ```
 
-On Electron v1.7.6 (the one in use by this project), the error callback fires with the following message: 
+On Electron v1.7.x, the error callback fires with the following message: 
 ```
 NavigatorUserMediaError
     constraintName: ""
