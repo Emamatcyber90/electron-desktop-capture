@@ -1,6 +1,8 @@
 # electron-desktop-capture
 
-The [Electron desktop capture API](https://github.com/electron/electron/blob/master/docs/api/desktop-capturer.md) does not capture audio as per the following constraints:
+Audio capture via Electron's Desktop Capture API [does not work](https://github.com/electron/electron/issues/10515) on OS X and Linux.
+
+Constraints set as per [Electron desktop capture API](https://github.com/electron/electron/blob/master/docs/api/desktop-capturer.md):
 
 ```
 const constraints = {
@@ -17,7 +19,7 @@ const constraints = {
 }
 ```
 
-On Electron v1.6.2 and v1.6.5, we get no error message, however, the following line is logged in the terminal when the video stream is sent over a RTC PeerConnection: 
+On Electron v1.6.x, we get no error message, however, the following line is logged in the terminal when the video stream is sent over a RTC PeerConnection: 
 
 ```
 [57858:0914/130847.751454:ERROR:audio_send_stream.cc(90)] Failed to set up send codec state.
