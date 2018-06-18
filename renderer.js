@@ -8,15 +8,15 @@ const captureAudio = true;
 const constraints = {
   video: {
     mandatory: {
-      chromeMediaSource: 'desktop'
+      chromeMediaSource: 'desktop',
     },
   },
   audio: captureAudio ? {
     mandatory: {
       chromeMediaSource: 'desktop',
-    }
+    },
   } : false,
-}
+};
 
 navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
   const videoElement = document.getElementById('capturedStream');
