@@ -2,36 +2,27 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 
-'use strict'
+// toggle to false to get a working video capture
+const captureAudio = true;
 
 const constraints = {
-  audio: {
+  video: {
     mandatory: {
       chromeMediaSource: 'desktop'
-    }
+    },
   },
-  video: {
+  audio: captureAudio ? {
     mandatory: {
-      chromeMediaSource: 'desktop'
+      chromeMediaSource: 'desktop',
     }
-  }
+  } : false,
 }
 
-const constraintsWorking = {
-  audio: false,
-  video: {
-    mandatory: {
-      chromeMediaSource: 'desktop'
-    }
-  }
-}
-
-navigator.mediaDevices.getUserMedia(constraints).then((s) => {
-    
-  let videoElement = document.getElementById('capture')
-  let videoTracks = s.getVideoTracks()
-  console.log('Using video device: ', videoTracks[0].label)
-  videoElement.srcObject = s
+navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+  const videoElement = document.getElementById('capturedStream');
+  videoElement.srcObject = stream;
 }).catch((e) => {
-  console.error('getUserMediaError: ', e)
-})
+  const error = document.getElementById('error');
+  error.innerHTML = `Error: ${e.name} | Message: ${e.message}`;
+  console.error('getUserMediaError: ', e);
+});
